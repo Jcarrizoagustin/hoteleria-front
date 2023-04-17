@@ -1,0 +1,8 @@
+.list-item {
+  display: flex;
+}
+
+.habitacion-content-list-item {
+  margin: 0 0 3px 5px;
+  font-family: sans-serif;
+}

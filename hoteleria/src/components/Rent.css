@@ -1,0 +1,10 @@
+.rent-container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  background-color: aqua;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

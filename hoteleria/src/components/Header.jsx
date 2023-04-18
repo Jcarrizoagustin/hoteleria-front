@@ -21,10 +21,10 @@ function Header({ authenticated, login }) {
 					<Link to='/' style={{ textDecoration: 'none' }}>
 						<li className='nav-link'>Inicio</li>
 					</Link>
-					<Link to='/inicio' style={{ textDecoration: 'none' }}>
+					<Link to='/habitaciones' style={{ textDecoration: 'none' }}>
 						<li className='nav-link'>Habitaciones</li>
 					</Link>
-					<Link to='/inicio' style={{ textDecoration: 'none' }}>
+					<Link to='/reservas' style={{ textDecoration: 'none' }}>
 						<li className='nav-link'>Reservas</li>
 					</Link>
 					<Link to='/inicio' style={{ textDecoration: 'none' }}>

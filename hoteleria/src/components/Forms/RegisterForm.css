@@ -45,6 +45,10 @@ input {
 
 .submit:hover{
   cursor: pointer;
+  border: 1px solid rgb(67, 0, 210);
+  background-color: white;
+  color: rgb(67, 0, 210);
+  transition: 0.2s ease-in-out;
 }
 
 .inicia-sesion{

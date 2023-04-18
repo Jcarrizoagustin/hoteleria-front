@@ -3,4 +3,32 @@ footer{
   color: white;
   background-color: rgb(67, 0, 210);
   margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.brand-name {
+  font-family: 'Lobster', cursive;
+  font-size: 2rem;
+}
+
+.social-container {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.social {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+}
+
+.social:hover{
+  cursor: pointer;
 }

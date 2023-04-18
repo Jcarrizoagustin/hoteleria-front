@@ -1,6 +1,6 @@
 import RoomCard from './RoomCard'
 import './Home.css'
-import FormSearchRoom from './FormSearchRoom'
+import SearchForm from './Forms/SearchForm'
 
 function Home() {
 	const data = [
@@ -116,7 +116,7 @@ function Home() {
 	]
 	return (
 		<div className='home'>
-			<FormSearchRoom />
+			<SearchForm />
 			{data.map(info => (
 				<RoomCard {...info} key={info.id} />
 			))}

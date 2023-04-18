@@ -12,42 +12,44 @@ function Header({ authenticated, login }) {
 		refMenu.current.classList.toggle('show')
 	}
 	return (
-		<header className='header'>
-			<div className='logo'>
-				<h2 className='logo-text'>Drak</h2>
-			</div>
-			<nav ref={refMenu} className='nav'>
-				<Link to='/inicio' style={{ textDecoration: 'none' }}>
-					<li className='nav-link'>Inicio</li>
-				</Link>
-				<Link to='/inicio' style={{ textDecoration: 'none' }}>
-					<li className='nav-link'>Habitaciones</li>
-				</Link>
-				<Link to='/inicio' style={{ textDecoration: 'none' }}>
-					<li className='nav-link'>Reservas</li>
-				</Link>
-				<Link to='/inicio' style={{ textDecoration: 'none' }}>
-					<li className='nav-link'>Contacto</li>
-				</Link>
-				{authenticated ? (
-					<Link to='/inicio' style={{ textDecoration: 'none' }}>
-						<li className='nav-link'>Mi cuenta</li>
+		<div className='bg-header'>
+			<header className='header'>
+				<div className='logo'>
+					<h2 className='logo-text'>Drak</h2>
+				</div>
+				<nav ref={refMenu} className='nav'>
+					<Link to='/' style={{ textDecoration: 'none' }}>
+						<li className='nav-link'>Inicio</li>
 					</Link>
-				) : (
-					<>
+					<Link to='/inicio' style={{ textDecoration: 'none' }}>
+						<li className='nav-link'>Habitaciones</li>
+					</Link>
+					<Link to='/inicio' style={{ textDecoration: 'none' }}>
+						<li className='nav-link'>Reservas</li>
+					</Link>
+					<Link to='/inicio' style={{ textDecoration: 'none' }}>
+						<li className='nav-link'>Contacto</li>
+					</Link>
+					{authenticated ? (
 						<Link to='/inicio' style={{ textDecoration: 'none' }}>
-							<li className='nav-link'>Iniciar Sesion</li>
+							<li className='nav-link'>Mi cuenta</li>
 						</Link>
-						<Link to='/inicio' style={{ textDecoration: 'none' }}>
-							<li className='nav-link'>Registrarme</li>
-						</Link>
-					</>
-				)}
-			</nav>
-			<div onClick={handleClickMenu} className='menu'>
-				<RxHamburgerMenu className='menu-icon' />
-			</div>
-		</header>
+					) : (
+						<>
+							<Link to='/login' style={{ textDecoration: 'none' }}>
+								<li className='nav-link'>Iniciar Sesion</li>
+							</Link>
+							<Link to='/registro' style={{ textDecoration: 'none' }}>
+								<li className='nav-link'>Registrarme</li>
+							</Link>
+						</>
+					)}
+				</nav>
+				<div onClick={handleClickMenu} className='menu'>
+					<RxHamburgerMenu className='menu-icon' />
+				</div>
+			</header>
+		</div>
 	)
 }
 Header.propTypes = {

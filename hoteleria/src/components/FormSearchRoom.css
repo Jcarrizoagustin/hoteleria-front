@@ -1,0 +1,20 @@
+.calendar{
+  width: 50%;
+  margin: 1rem auto;
+  height: 5rem;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.input {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.data-input:hover {
+  cursor: pointer;
+}

@@ -1,5 +1,11 @@
 #root{
   width: 90%;
   margin: 0 auto;
+}
 
+.App {
+  min-height:100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

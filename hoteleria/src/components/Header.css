@@ -1,6 +1,11 @@
-.header {
+.bg-header{
+  width: 100%;
   background-color: rgb(67, 0, 210);
-  max-width: 1200px;
+}
+
+.header {
+  
+  max-width: 1280px;
   width: 100%;
   margin: 0 auto;
   height: 3rem;

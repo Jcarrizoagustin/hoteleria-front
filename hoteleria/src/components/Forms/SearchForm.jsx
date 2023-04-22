@@ -1,6 +1,15 @@
 import './SearchForm.css'
 import { useFormik } from 'formik'
 function SearchForm() {
+	const URL = 'http://localhost:8080/api/v1/habitaciones'
+	function getData(values) {
+		fetch(
+			URL +
+				`/?fechaIngreso=${values.fechaEntrada}&fechaSalida=${values.fechaSalida}`
+		)
+			.then(response => response.json())
+			.then(data => console.log('data', data))
+	}
 	const formik = useFormik({
 		initialValues: {
 			fechaEntrada: '',
@@ -9,7 +18,8 @@ function SearchForm() {
 			personas: '',
 		},
 		onSubmit: values => {
-			alert(JSON.stringify(values, null, 2))
+			getData(values)
+			console.log(JSON.stringify(values, null, 2))
 		},
 	})
 	return (
@@ -23,14 +33,14 @@ function SearchForm() {
 						name='fechaEntrada'
 						value={formik.values.fechaEntrada}
 						onChange={formik.handleChange}
-						className='input entrada'
+						className='entrada'
 					/>
 				</div>
 				<div className='input-date'>
 					<input
 						type='date'
 						id='salida'
-						className='input salida'
+						className='salida'
 						name='fechaSalida'
 						value={formik.values.fechaSalida}
 						onChange={formik.handleChange}

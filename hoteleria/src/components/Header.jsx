@@ -1,16 +1,26 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './Header.css'
 import { RxHamburgerMenu } from 'react-icons/rx'
 import PropTypes from 'prop-types'
 import { useRef } from 'react'
 
-function Header({ authenticated, login }) {
-	// TODO: mostrar menu
+function Header({ email, logout }) {
+	const redirect = useNavigate()
 	const refMenu = useRef()
 
 	const handleClickMenu = () => {
 		refMenu.current.classList.toggle('show')
 	}
+
+	const handleCloseSession = () => {
+		const response = confirm('Seguro que desea cerrar sesion?')
+		if (response) {
+			window.sessionStorage.removeItem('userLogued')
+			redirect('/login')
+			logout()
+		}
+	}
+
 	return (
 		<div className='bg-header'>
 			<header className='header'>
@@ -18,28 +28,59 @@ function Header({ authenticated, login }) {
 					<h2 className='logo-text'>Drak</h2>
 				</div>
 				<nav ref={refMenu} className='nav'>
-					<Link to='/' style={{ textDecoration: 'none' }}>
+					<Link
+						to='/'
+						onClick={handleClickMenu}
+						style={{ textDecoration: 'none' }}
+					>
 						<li className='nav-link'>Inicio</li>
 					</Link>
-					<Link to='/habitaciones' style={{ textDecoration: 'none' }}>
+					<Link
+						to='/habitaciones'
+						onClick={handleClickMenu}
+						style={{ textDecoration: 'none' }}
+					>
 						<li className='nav-link'>Habitaciones</li>
 					</Link>
-					<Link to='/reservas' style={{ textDecoration: 'none' }}>
+					<Link
+						to='/reservas'
+						onClick={handleClickMenu}
+						style={{ textDecoration: 'none' }}
+					>
 						<li className='nav-link'>Reservas</li>
 					</Link>
-					<Link to='/inicio' style={{ textDecoration: 'none' }}>
-						<li className='nav-link'>Contacto</li>
-					</Link>
-					{authenticated ? (
-						<Link to='/inicio' style={{ textDecoration: 'none' }}>
-							<li className='nav-link'>Mi cuenta</li>
-						</Link>
+					{email ? (
+						<>
+							<Link
+								to='/inicio'
+								onClick={handleClickMenu}
+								style={{ textDecoration: 'none' }}
+							>
+								<li className='nav-link'>{email}</li>
+							</Link>
+
+							<li
+								className='nav-link'
+								onClick={handleCloseSession}
+								style={{ textDecoration: 'none' }}
+							>
+								Cerrar sesion
+							</li>
+						</>
 					) : (
 						<>
-							<Link to='/login' style={{ textDecoration: 'none' }}>
+							<Link
+								to='/login'
+								onClick={handleClickMenu}
+								style={{ textDecoration: 'none' }}
+							>
 								<li className='nav-link'>Iniciar Sesion</li>
 							</Link>
-							<Link to='/registro' style={{ textDecoration: 'none' }}>
+							<Link
+								to='/registro'
+								onClick={handleClickMenu}
+								style={{ textDecoration: 'none' }}
+							>
 								<li className='nav-link'>Registrarme</li>
 							</Link>
 						</>
@@ -53,7 +94,7 @@ function Header({ authenticated, login }) {
 	)
 }
 Header.propTypes = {
-	authenticated: PropTypes.bool,
-	login: PropTypes.func,
+	email: PropTypes.string,
+	logout: PropTypes.func,
 }
 export default Header

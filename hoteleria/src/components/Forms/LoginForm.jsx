@@ -1,14 +1,38 @@
 import './RegisterForm.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useFormik } from 'formik'
-function LoginForm() {
+import PropTypes from 'prop-types'
+function LoginForm({ changeUser }) {
+	const redirect = useNavigate()
+
+	function sucess(obj) {
+		// Obj representa el ususario logueado en la respuesta del backend
+		window.sessionStorage.setItem('userLogued', JSON.stringify(obj))
+		changeUser()
+	}
+
+	function handleLogin(data) {
+		fetch('http://localhost:8080/api/v1/login', {
+			method: 'POST',
+			body: JSON.stringify(data),
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		})
+			.then(res => res.json())
+			.then(da => {
+				sucess(da)
+				redirect('/')
+			})
+	}
+
 	const formik = useFormik({
 		initialValues: {
 			email: '',
-			contraseña: '',
+			password: '',
 		},
 		onSubmit: values => {
-			alert(JSON.stringify(values, null, 2))
+			handleLogin(values)
 		},
 	})
 	return (
@@ -33,11 +57,11 @@ function LoginForm() {
 				</label>
 				<input
 					type='password'
-					name='contraseña'
+					name='password'
 					id='password'
 					className='data-input'
 					onChange={formik.handleChange}
-					value={formik.values.contraseña}
+					value={formik.values.password}
 				/>
 			</div>
 			<div className='btn-submit'>
@@ -51,5 +75,7 @@ function LoginForm() {
 		</form>
 	)
 }
-
+LoginForm.propTypes = {
+	changeUser: PropTypes.func,
+}
 export default LoginForm

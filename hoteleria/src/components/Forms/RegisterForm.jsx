@@ -1,18 +1,47 @@
 import './RegisterForm.css'
 import { Link } from 'react-router-dom'
 import { useFormik } from 'formik'
+import ClientePost from '../../model/ClientePost'
 
 function RegisterForm() {
+	function postFetch(info) {
+		const URL = 'http://localhost:8080/api/v1/clientes'
+		fetch(URL, {
+			method: 'POST',
+			body: JSON.stringify(info),
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		})
+			.then(response => console.log(response))
+			.then(data => console.log(data))
+	}
+	function enviarDatos(values) {
+		if (values.contraseña !== values.contraseña2) {
+			alert('Las contraseñas no coinciden')
+			return
+		}
+		const cliente = new ClientePost(
+			values.nombre,
+			values.apellido,
+			values.email,
+			values.telefono,
+			values.contraseña
+		)
+		postFetch(cliente)
+		console.log(JSON.stringify(cliente, null, 2))
+	}
 	const formik = useFormik({
 		initialValues: {
 			nombre: '',
 			apellido: '',
 			email: '',
+			telefono: '',
 			contraseña: '',
 			contraseña2: '',
 		},
 		onSubmit: values => {
-			alert(JSON.stringify(values, null, 2))
+			enviarDatos(values)
 		},
 	})
 	return (
@@ -55,6 +84,19 @@ function RegisterForm() {
 					name='email'
 					onChange={formik.handleChange}
 					value={formik.values.email}
+				/>
+			</div>
+			<div className='input'>
+				<label htmlFor='telefono' className='label'>
+					Teléfono
+				</label>
+				<input
+					type='text'
+					id='telefono'
+					className='data-input'
+					name='telefono'
+					onChange={formik.handleChange}
+					value={formik.values.telefono}
 				/>
 			</div>
 			<div className='input'>

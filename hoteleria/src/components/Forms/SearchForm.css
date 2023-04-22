@@ -17,6 +17,11 @@
   width: 17rem;
   align-items: center;
 }
+
+.fechas{
+  min-width: 300px;
+}
+
 .filtros{
   margin-top: 1rem;
 }
@@ -40,6 +45,7 @@
 }
 
 .input-date {
+  min-width: 150px;
   width: 50%;
 }
 

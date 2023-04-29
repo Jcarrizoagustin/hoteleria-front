@@ -1,6 +1,7 @@
 import './SearchForm.css'
 import { useFormik } from 'formik'
-function SearchForm() {
+import PropTypes from 'prop-types'
+function SearchForm({ update }) {
 	const URL = 'http://localhost:8080/api/v1/habitaciones'
 	function getData(values) {
 		fetch(
@@ -8,7 +9,20 @@ function SearchForm() {
 				`/?fechaIngreso=${values.fechaEntrada}&fechaSalida=${values.fechaSalida}`
 		)
 			.then(response => response.json())
-			.then(data => console.log('data', data))
+			.then(data =>
+				update(
+					data.filter(e => {
+						if (values.precioMax) {
+							return (
+								e.precio <= Number(values.precioMax) &&
+								e.capacidad >= Number(values.personas)
+							)
+						} else {
+							return true
+						}
+					})
+				)
+			)
 	}
 	const formik = useFormik({
 		initialValues: {
@@ -83,6 +97,10 @@ function SearchForm() {
 			</button>
 		</form>
 	)
+}
+
+SearchForm.propTypes = {
+	update: PropTypes.func,
 }
 
 export default SearchForm

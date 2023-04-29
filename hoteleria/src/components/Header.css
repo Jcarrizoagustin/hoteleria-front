@@ -30,12 +30,13 @@
 
 .nav-link {
   list-style: none;
-  margin-left: .5rem;
+  margin-left: 1rem;
   color: white;
 }
 
 .nav-link:hover {
   opacity: .8;
+  cursor: pointer;
 }
 .menu{
   display: none;
@@ -46,6 +47,10 @@
 .menu-icon {
   font-size: 32px;
   color: white;
+}
+
+.menu-icon:hover{
+  cursor: pointer;
 }
 
 

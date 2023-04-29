@@ -40,7 +40,10 @@
   margin-left: 0.8rem;
   display: flex;
   align-items: center;
-  color: rgb(45, 45, 87);
+  color: grey;
+}
+.icon {
+  margin-left: .2rem;
 }
 
 .habitacion-content-list {

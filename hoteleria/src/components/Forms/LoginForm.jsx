@@ -5,25 +5,35 @@ import PropTypes from 'prop-types'
 function LoginForm({ changeUser }) {
 	const redirect = useNavigate()
 
-	function sucess(obj) {
+	function sucess(obj, data) {
 		// Obj representa el ususario logueado en la respuesta del backend
 		window.sessionStorage.setItem('userLogued', JSON.stringify(obj))
+		const ep = data.email + ':' + data.password
+		const token = btoa(ep)
+		window.sessionStorage.setItem('token', token)
 		changeUser()
+		redirect('/')
 	}
 
-	function handleLogin(data) {
-		fetch('http://localhost:8080/api/v1/login', {
-			method: 'POST',
-			body: JSON.stringify(data),
-			headers: {
-				'Content-Type': 'application/json',
-			},
-		})
-			.then(res => res.json())
-			.then(da => {
-				sucess(da)
-				redirect('/')
+	async function handleLogin(data) {
+		try {
+			const fetchData = await fetch('http://localhost:8080/api/v1/login', {
+				method: 'POST',
+				body: JSON.stringify(data),
+				headers: {
+					'Content-Type': 'application/json',
+				},
 			})
+			if (!fetchData.ok) {
+				const errorData = await fetchData.json()
+				throw new Error(errorData.message)
+			}
+			console.log('success')
+			const finalData = await fetchData.json()
+			sucess(finalData, data)
+		} catch (error) {
+			console.error(error.toString())
+		}
 	}
 
 	const formik = useFormik({

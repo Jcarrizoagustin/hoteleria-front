@@ -1,21 +1,28 @@
 import './RegisterForm.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useFormik } from 'formik'
 import ClientePost from '../../model/ClientePost'
 
 function RegisterForm() {
-	function postFetch(info) {
-		const URL = 'http://localhost:8080/api/v1/clientes'
-		fetch(URL, {
+	const redirect = useNavigate()
+	const URL = 'http://localhost:8080/api/v1/clientes'
+	const postFetchAsync = async info => {
+		const response = await fetch(URL, {
 			method: 'POST',
 			body: JSON.stringify(info),
 			headers: {
 				'Content-Type': 'application/json',
 			},
 		})
-			.then(response => console.log(response))
-			.then(data => console.log(data))
+		if (!response.ok) {
+			const error = await response.json()
+			throw new Error(error.message)
+		}
+		const jsonData = await response.json()
+		console.log(jsonData)
+		redirect('/login')
 	}
+
 	function enviarDatos(values) {
 		if (values.contraseña !== values.contraseña2) {
 			alert('Las contraseñas no coinciden')
@@ -28,7 +35,7 @@ function RegisterForm() {
 			values.telefono,
 			values.contraseña
 		)
-		postFetch(cliente)
+		postFetchAsync(cliente)
 		console.log(JSON.stringify(cliente, null, 2))
 	}
 	const formik = useFormik({

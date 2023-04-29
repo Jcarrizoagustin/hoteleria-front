@@ -4,7 +4,7 @@ import { RxHamburgerMenu } from 'react-icons/rx'
 import PropTypes from 'prop-types'
 import { useRef } from 'react'
 
-function Header({ email, logout }) {
+function Header({ user, logout }) {
 	const redirect = useNavigate()
 	const refMenu = useRef()
 
@@ -16,7 +16,9 @@ function Header({ email, logout }) {
 		const response = confirm('Seguro que desea cerrar sesion?')
 		if (response) {
 			window.sessionStorage.removeItem('userLogued')
+			window.sessionStorage.removeItem('token')
 			redirect('/login')
+			handleClickMenu()
 			logout()
 		}
 	}
@@ -42,21 +44,31 @@ function Header({ email, logout }) {
 					>
 						<li className='nav-link'>Habitaciones</li>
 					</Link>
-					<Link
-						to='/reservas'
-						onClick={handleClickMenu}
-						style={{ textDecoration: 'none' }}
-					>
-						<li className='nav-link'>Reservas</li>
-					</Link>
-					{email ? (
+					{user.role === 'admin' ? (
+						<Link
+							to='/dashboard'
+							onClick={handleClickMenu}
+							style={{ textDecoration: 'none' }}
+						>
+							<li className='nav-link'>Dashboard</li>
+						</Link>
+					) : (
+						<Link
+							to='/reservas'
+							onClick={handleClickMenu}
+							style={{ textDecoration: 'none' }}
+						>
+							<li className='nav-link'>Reservas</li>
+						</Link>
+					)}
+					{user.email ? (
 						<>
 							<Link
 								to='/inicio'
 								onClick={handleClickMenu}
 								style={{ textDecoration: 'none' }}
 							>
-								<li className='nav-link'>{email}</li>
+								<li className='nav-link'>{user.email}</li>
 							</Link>
 
 							<li
@@ -64,7 +76,7 @@ function Header({ email, logout }) {
 								onClick={handleCloseSession}
 								style={{ textDecoration: 'none' }}
 							>
-								Cerrar sesion
+								cerrar sesion
 							</li>
 						</>
 					) : (
@@ -94,7 +106,7 @@ function Header({ email, logout }) {
 	)
 }
 Header.propTypes = {
-	email: PropTypes.string,
+	user: PropTypes.object,
 	logout: PropTypes.func,
 }
 export default Header

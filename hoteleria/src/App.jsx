@@ -9,6 +9,7 @@ import RentContainer from './components/RentContainer'
 import Dashboard from './components/Dashboard'
 import Home from './components/Home'
 import { useUser } from './hooks/useUser'
+import UserDataEdit from './components/Forms/UserDataEdit'
 function App() {
 	const { user, isAdmin, actualizarUser, eliminarUser } = useUser()
 
@@ -20,6 +21,7 @@ function App() {
 					<Route path='/' element={<Home />} />
 					<Route path='/habitaciones' element={<RoomContainer user={user} />} />
 					<Route path='/registro' element={<RegisterForm />} />
+					<Route path='/mi-cuenta' element={<UserDataEdit user={user} />} />
 					<Route
 						path='/login'
 						element={<LoginForm updateUser={actualizarUser} />}

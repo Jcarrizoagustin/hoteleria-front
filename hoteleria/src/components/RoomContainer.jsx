@@ -84,6 +84,7 @@ function RoomContainer({ user }) {
 					<RoomCard
 						{...info}
 						tipo={'reservar'}
+						showButton={true}
 						key={info.id}
 						handleButtonClick={() => {
 							if (user.email) {

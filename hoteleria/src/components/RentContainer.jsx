@@ -39,8 +39,8 @@ function RentContainer() {
 	}, [])
 
 	return (
-		<div>
-			<h2>Mis reservas</h2>
+		<div style={{ textAlign: 'center' }}>
+			<h2 style={{ fontSize: '2rem' }}>Mis reservas</h2>
 			{reservas.length > 0 ? (
 				reservas.map(el => <Rent key={el.id} obj={el} updateRent={fetchData} />)
 			) : (

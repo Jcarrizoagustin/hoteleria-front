@@ -31,10 +31,10 @@ function Rent({ obj, updateRent }) {
 
 	return (
 		<div className='rent'>
-			<div>
-				<h5>Habitaciones</h5>
+			<div className='rent-room-container'>
+				<h5 className='habitaciones-text'>Habitacion/es</h5>
 				{obj.habitaciones.map(el => (
-					<RoomCard key={el.id} {...el} />
+					<RoomCard key={el.id} {...el} showButton={false} />
 				))}
 			</div>
 			<div className='fechas'>
@@ -45,7 +45,9 @@ function Rent({ obj, updateRent }) {
 				<h3>Fecha Salida</h3>
 				<h4>{obj.fechaSalida}</h4>
 			</div>
-			<h5>Total: {obj.precioTotal}</h5>
+			<h5 className='total-title'>
+				Total: <span className='total-price'>$ {obj.precioTotal}</span>
+			</h5>
 			<button onClick={handleCancelRent} className='btn-cancelar'>
 				Cancelar
 			</button>

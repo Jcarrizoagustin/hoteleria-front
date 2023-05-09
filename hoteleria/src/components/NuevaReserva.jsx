@@ -52,6 +52,7 @@ function NuevaReserva({
 						<RoomCard
 							{...el}
 							handleButtonClick={() => handleClickButton(el.id)}
+							showButton={true}
 						/>
 					</div>
 				))}

@@ -65,7 +65,7 @@ function Header({ user, logout }) {
 					{user.email ? (
 						<>
 							<Link
-								to='/inicio'
+								to='/mi-cuenta'
 								onClick={handleClickMenu}
 								style={{ textDecoration: 'none' }}
 							>

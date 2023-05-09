@@ -14,6 +14,7 @@ function RoomCard({
 	cantidadCamas,
 	tipo,
 	handleButtonClick,
+	showButton,
 }) {
 	return (
 		<div className='habitacion-container'>
@@ -44,10 +45,17 @@ function RoomCard({
 						$<span className='price'>{precio}</span>
 					</h4>
 					<span className='price-description'>por noche</span>
-					{tipo === 'reservar' ? (
-						<RoomCardButton text={'Reservar'} handleClick={handleButtonClick} />
+					{showButton ? (
+						tipo === 'reservar' ? (
+							<RoomCardButton
+								text={'Reservar'}
+								handleClick={handleButtonClick}
+							/>
+						) : (
+							<RoomCardButton text={'Quitar'} handleClick={handleButtonClick} />
+						)
 					) : (
-						<RoomCardButton text={'Quitar'} handleClick={handleButtonClick} />
+						<></>
 					)}
 				</div>
 			</div>
@@ -65,6 +73,7 @@ RoomCard.propTypes = {
 	cantidadCamas: PropTypes.number,
 	tipo: PropTypes.string,
 	handleButtonClick: PropTypes.func,
+	showButton: PropTypes.bool,
 }
 
 export default RoomCard

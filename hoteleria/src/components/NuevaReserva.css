@@ -1,0 +1,50 @@
+.reserva-container {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 1rem;
+  width: 50%;
+  height: 90vh;
+  position:fixed;
+  top: 0;
+  right: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: .2s ease-in-out;
+}
+
+
+.icon-close{
+  font-size: 2rem;
+  position: absolute;
+  right: 0;
+}
+
+.icon-close:hover{
+  cursor:pointer
+}
+
+
+.reserva-fechas {
+  border: 2px solid red;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.reserva-fecha {
+  font-size: 1rem;
+  margin: .2rem;
+  text-align: center;
+}
+
+
+
+
+.reserva-habitaciones {
+  overflow: scroll;
+  border: 2px solid orange;
+}
+
+.reserva-footer{
+  border: 2px solid pink;
+}

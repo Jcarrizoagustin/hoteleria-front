@@ -1,7 +1,7 @@
 import './SearchForm.css'
 import { useFormik } from 'formik'
 import PropTypes from 'prop-types'
-function SearchForm({ update }) {
+function SearchForm({ update, fechas }) {
 	const URL = 'http://localhost:8080/api/v1/habitaciones'
 	function getData(values) {
 		fetch(
@@ -33,6 +33,8 @@ function SearchForm({ update }) {
 		},
 		onSubmit: values => {
 			getData(values)
+			const { fechaEntrada, fechaSalida } = values
+			fechas({ fechaIngreso: fechaEntrada, fechaSalida: fechaSalida })
 			console.log(JSON.stringify(values, null, 2))
 		},
 	})
@@ -101,6 +103,7 @@ function SearchForm({ update }) {
 
 SearchForm.propTypes = {
 	update: PropTypes.func,
+	fechas: PropTypes.func,
 }
 
 export default SearchForm

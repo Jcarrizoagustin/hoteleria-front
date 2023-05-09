@@ -27,7 +27,7 @@ function RentContainer() {
 				const finalData = await data.json()
 				setReservas(finalData)
 			} catch (error) {
-				console.error(error.toString())
+				console.error(error)
 			}
 		} else {
 			redirect('/login')
@@ -42,7 +42,7 @@ function RentContainer() {
 		<div>
 			<h2>Mis reservas</h2>
 			{reservas.length > 0 ? (
-				reservas.map(el => <Rent key={el.id} obj={el} />)
+				reservas.map(el => <Rent key={el.id} obj={el} updateRent={fetchData} />)
 			) : (
 				<h2>No hay resultados</h2>
 			)}

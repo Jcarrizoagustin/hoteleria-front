@@ -2,26 +2,30 @@ import './Rent.css'
 import RoomCard from './RoomCard'
 import PropTypes from 'prop-types'
 
-function Rent({ obj }) {
+function Rent({ obj, updateRent }) {
 	const handleCancelRent = async () => {
-		try {
-			const token = window.sessionStorage.getItem('token')
-			const response = await fetch(
-				`http://localhost:8080/api/v1/reservas/${obj.id}`,
-				{
-					method: 'DELETE',
-					headers: {
-						'Content-Type': 'application/json',
-						Authorization: 'Basic ' + token,
-					},
+		const dato = confirm('Desea cancelar la reserva ?')
+		if (dato) {
+			try {
+				const token = window.sessionStorage.getItem('token')
+				const response = await fetch(
+					`http://localhost:8080/api/v1/reservas/${obj.id}`,
+					{
+						method: 'DELETE',
+						headers: {
+							'Content-Type': 'application/json',
+							Authorization: 'Basic ' + token,
+						},
+					}
+				)
+				if (!response.ok) {
+					const error = await response.json()
+					throw new Error(error.message)
 				}
-			)
-			if (!response.ok) {
-				const error = await response.json()
-				throw new Error(error.message)
+				updateRent()
+			} catch (e) {
+				console.error(e.toString())
 			}
-		} catch (e) {
-			console.error(e.toString())
 		}
 	}
 
@@ -51,6 +55,7 @@ function Rent({ obj }) {
 
 Rent.propTypes = {
 	obj: PropTypes.object,
+	updateRent: PropTypes.func,
 }
 
 export default Rent

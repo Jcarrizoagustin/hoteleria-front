@@ -3,10 +3,12 @@ import './Header.css'
 import { RxHamburgerMenu } from 'react-icons/rx'
 import PropTypes from 'prop-types'
 import { useRef } from 'react'
+import { useToken } from '../hooks/useToken'
 
 function Header({ user, logout }) {
 	const redirect = useNavigate()
 	const refMenu = useRef()
+	const { changeToken } = useToken()
 
 	const handleClickMenu = () => {
 		refMenu.current.classList.toggle('show')
@@ -15,8 +17,7 @@ function Header({ user, logout }) {
 	const handleCloseSession = () => {
 		const response = confirm('Seguro que desea cerrar sesion?')
 		if (response) {
-			window.sessionStorage.removeItem('userLogued')
-			window.sessionStorage.removeItem('token')
+			changeToken('')
 			redirect('/login')
 			handleClickMenu()
 			logout()

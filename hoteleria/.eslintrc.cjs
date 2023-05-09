@@ -22,5 +22,6 @@ module.exports = {
 	plugins: ['react'],
 	rules: {
 		'space-before-function-paren': 'off',
+		'no-unused-vars': 'off'
 	},
 }

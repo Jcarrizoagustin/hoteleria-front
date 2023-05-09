@@ -1,0 +1,24 @@
+
+.habitacion-content-button {
+  width: 5rem;
+  height: 2rem;
+  border-radius: 0.8rem;
+  border: none;
+  color: white;
+  margin-left: 1.1rem;
+}
+.alquilar{
+  background-color: #4300d2;
+}
+
+.quitar{
+  background-color: red;
+}
+
+.habitacion-content-button:hover {
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+  background-color: white;
+  color: #4300d2;
+  border: 1px solid #4300d2;
+}

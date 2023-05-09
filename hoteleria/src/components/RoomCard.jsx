@@ -3,14 +3,17 @@ import { BsFillPersonFill } from 'react-icons/bs'
 import { FaBed } from 'react-icons/fa'
 import Detail from './Detail'
 import './RoomCard.css'
+import RoomCardButton from './RoomCardButton'
 function RoomCard({
+	id,
 	nombre,
 	urlImg,
 	precio,
 	capacidad,
 	descripciones,
 	cantidadCamas,
-	alquilar,
+	tipo,
+	handleButtonClick,
 }) {
 	return (
 		<div className='habitacion-container'>
@@ -41,8 +44,10 @@ function RoomCard({
 						$<span className='price'>{precio}</span>
 					</h4>
 					<span className='price-description'>por noche</span>
-					{alquilar && (
-						<button className='habitacion-content-button'>Reservar</button>
+					{tipo === 'reservar' ? (
+						<RoomCardButton text={'Reservar'} handleClick={handleButtonClick} />
+					) : (
+						<RoomCardButton text={'Quitar'} handleClick={handleButtonClick} />
 					)}
 				</div>
 			</div>
@@ -51,13 +56,15 @@ function RoomCard({
 }
 
 RoomCard.propTypes = {
+	id: PropTypes.number,
 	nombre: PropTypes.string,
 	urlImg: PropTypes.string,
 	precio: PropTypes.string,
 	capacidad: PropTypes.number,
 	descripciones: PropTypes.array,
 	cantidadCamas: PropTypes.number,
-	alquilar: PropTypes.bool,
+	tipo: PropTypes.string,
+	handleButtonClick: PropTypes.func,
 }
 
 export default RoomCard

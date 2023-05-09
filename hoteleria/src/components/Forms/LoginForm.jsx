@@ -2,16 +2,16 @@ import './RegisterForm.css'
 import { Link, useNavigate } from 'react-router-dom'
 import { useFormik } from 'formik'
 import PropTypes from 'prop-types'
-function LoginForm({ changeUser }) {
+import { useToken } from '../../hooks/useToken'
+function LoginForm({ updateUser }) {
 	const redirect = useNavigate()
+	const { changeToken } = useToken()
 
 	function sucess(obj, data) {
 		// Obj representa el ususario logueado en la respuesta del backend
-		window.sessionStorage.setItem('userLogued', JSON.stringify(obj))
+		updateUser(obj)
 		const ep = data.email + ':' + data.password
-		const token = btoa(ep)
-		window.sessionStorage.setItem('token', token)
-		changeUser()
+		changeToken(btoa(ep))
 		redirect('/')
 	}
 
@@ -86,6 +86,6 @@ function LoginForm({ changeUser }) {
 	)
 }
 LoginForm.propTypes = {
-	changeUser: PropTypes.func,
+	updateUser: PropTypes.func,
 }
 export default LoginForm

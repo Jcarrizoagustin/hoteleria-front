@@ -28,7 +28,10 @@ function Header({ user, logout }) {
 		<div className='bg-header'>
 			<header className='header'>
 				<div className='logo'>
-					<h2 className='logo-text'>Drak</h2>
+					<h2 className='logo-text'>
+						Spark{' '}
+						<span style={{ fontSize: '1rem', fontWeight: '200' }}>Hotel</span>
+					</h2>
 				</div>
 				<nav ref={refMenu} className='nav'>
 					<Link
@@ -73,7 +76,7 @@ function Header({ user, logout }) {
 							</Link>
 
 							<li
-								className='nav-link'
+								className='nav-link close-sesion'
 								onClick={handleCloseSession}
 								style={{ textDecoration: 'none' }}
 							>

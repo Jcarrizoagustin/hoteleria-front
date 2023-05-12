@@ -14,8 +14,9 @@ function Home() {
 						Confort, Confianza, Seguridad.
 					</h3>
 					<p className='home-card-description-text'>
-						Tenemos la responsabilidad de hacer que tu estadia sea la mejor, por
-						eso nos enfocamos en todos los detalles.
+						Las mejores habitaciones, un personal disponible las 24hs para lo
+						que necesites, y un amplio sistema de seguridad en nuestras
+						instalaciones van a hacer sentirte como en casa.
 					</p>
 				</div>
 			</div>
@@ -26,9 +27,13 @@ function Home() {
 						Encontrá la habitación ideal para vos
 					</h3>
 					<p className='home-card-description-text'>
-						En <span style={{ fontFamily: 'Lobster' }}>Drak</span> nos
-						aseguramos de implementar los mejores servicios del mercado para que
-						vos y tu familia pasen unas estadias de maravilla
+						En{' '}
+						<span style={{ fontFamily: 'Lobster', fontWeight: '400' }}>
+							Spark{' '}
+							<span style={{ fontSize: '1rem', fontWeight: '200' }}>Hotel</span>
+						</span>{' '}
+						tenemos una amplia variedad de habitaciones con temática. Encontrá
+						la que más se adapte con vos.
 					</p>
 				</div>
 				<div className='home-card-img'>
@@ -49,8 +54,9 @@ function Home() {
 				<div className='home-card-description'>
 					<h3 className='home-card-description-title'>Viví la naturaleza</h3>
 					<p className='home-card-description-text'>
-						Nuestros servicios premium poseen excursiones privadas que no vas a
-						poder olvidar.
+						Nuestro hotel está en medio de un paisaje único. Ofrecemos a
+						nuestros huéspedes un descuento para que puedan disfrutar de todas
+						las excursiones.
 					</p>
 				</div>
 			</div>

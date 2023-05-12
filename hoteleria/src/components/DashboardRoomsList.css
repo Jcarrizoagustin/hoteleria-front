@@ -1,0 +1,28 @@
+.dashboard-room-list {
+  
+}
+
+.room-list {
+  width: 80%;
+  margin: 1rem auto;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn-option{
+  border-radius: 1rem;
+  height: 3rem;
+  width: 3rem;
+  border: none;
+  color: white;
+}
+
+.btn-option:hover{
+  cursor: pointer;
+}

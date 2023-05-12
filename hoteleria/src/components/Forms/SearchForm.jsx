@@ -84,7 +84,7 @@ function SearchForm({ update, fechas }) {
 					</label>
 					<input
 						type='number'
-						min={0}
+						min={1}
 						max={5}
 						id='cantidad'
 						name='personas'

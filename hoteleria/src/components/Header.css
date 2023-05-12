@@ -17,6 +17,7 @@
 
 .logo-text {
   font-family: 'Lobster', cursive;
+  font-weight: 400;
   font-size: 2rem;
   color: white;
 }
@@ -51,6 +52,12 @@
 
 .menu-icon:hover{
   cursor: pointer;
+}
+
+.close-sesion{
+  border:1px solid white;
+  border-radius: 1rem;
+  padding: .5rem;
 }
 
 

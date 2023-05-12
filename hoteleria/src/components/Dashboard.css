@@ -1,0 +1,12 @@
+.dashboard-container{
+  padding: 3px;
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.dashboard-content{
+  height: 100%;
+  width: 100%;
+  margin: 1rem 0;
+}

@@ -48,3 +48,20 @@
 .reserva-footer{
   border: 2px solid pink;
 }
+
+.confirmar {
+  border: none;
+  border-radius: 1rem;
+  color: aliceblue;
+  background-color: rgb(67, 0, 210);
+  width: 7rem;
+  height: 2rem;
+  transition: .25s ease-in-out;
+}
+
+.confirmar:hover{
+  border: 1px solid rgb(67, 0, 210);
+  background-color: white;
+  color: rgb(67, 0, 210);
+  cursor: pointer;
+}

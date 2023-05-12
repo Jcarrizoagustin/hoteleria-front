@@ -1,10 +1,13 @@
 import './Footer.css'
 import { BsInstagram, BsWhatsapp } from 'react-icons/bs'
 import { RiFacebookFill } from 'react-icons/ri'
+import { AiOutlineCopyrightCircle } from 'react-icons/ai'
 function Footer() {
 	return (
 		<footer>
-			<h3 className='brand-name'>Drak</h3>
+			<h3 className='brand-name'>
+				Spark <span style={{ fontSize: '1rem', fontWeight: '200' }}>Hotel</span>
+			</h3>
 			<div className='social-container'>
 				<a
 					className='social'
@@ -33,6 +36,12 @@ function Footer() {
 					<BsWhatsapp />
 					WhatsApp
 				</a>
+			</div>
+			<div className='author'>
+				<AiOutlineCopyrightCircle />
+				<h3 className='author-text'>
+					Desarrollado por: Agustin Carrizo - 2023
+				</h3>
 			</div>
 		</footer>
 	)

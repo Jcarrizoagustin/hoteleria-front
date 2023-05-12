@@ -1,5 +1,5 @@
 import './App.css'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useParams } from 'react-router-dom'
 import Header from './components/Header'
 import RoomContainer from './components/RoomContainer'
 import Footer from './components/Footer'
@@ -10,8 +10,14 @@ import Dashboard from './components/Dashboard'
 import Home from './components/Home'
 import { useUser } from './hooks/useUser'
 import UserDataEdit from './components/Forms/UserDataEdit'
+import DashboardClients from './components/DashboardClients'
+import NewRoomForm from './components/Forms/NewRoomForm'
+import DashboardRoom from './components/DashboardRoom'
+import DashboardRoomsList from './components/DashboardRoomsList'
+import EditRoomForm from './components/Forms/EditRoomForm'
 function App() {
 	const { user, isAdmin, actualizarUser, eliminarUser } = useUser()
+	const { id } = useParams()
 
 	return (
 		<div className='App'>
@@ -36,7 +42,16 @@ function App() {
 								<LoginForm updateUser={actualizarUser} />
 							)
 						}
-					/>
+					>
+						<Route path='clientes' element={<DashboardClients />} />
+
+						<Route path='habitaciones' element={<DashboardRoom />}>
+							<Route path='registro' element={<NewRoomForm />} />
+							<Route path='listado' element={<DashboardRoomsList />}>
+								<Route path='edit/:id' element={<EditRoomForm id={id} />} />
+							</Route>
+						</Route>
+					</Route>
 				</Routes>
 			</BrowserRouter>
 			<Footer />

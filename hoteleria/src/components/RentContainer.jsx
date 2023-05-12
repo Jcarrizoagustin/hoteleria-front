@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Rent from './Rent'
+import { useFetch } from '../hooks/useFetch'
 
 function RentContainer() {
 	const redirect = useNavigate()
@@ -23,9 +24,15 @@ function RentContainer() {
 				if (!data.ok) {
 					const errorData = await data.json()
 					throw new Error(errorData.message)
+				} else {
+					if (data.status === 200) {
+						console.log(data)
+						const finalData = await data.json()
+						setReservas(finalData)
+					} else {
+						setReservas([])
+					}
 				}
-				const finalData = await data.json()
-				setReservas(finalData)
 			} catch (error) {
 				console.error(error)
 			}

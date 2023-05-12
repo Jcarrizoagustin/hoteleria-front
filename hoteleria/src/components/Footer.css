@@ -12,6 +12,7 @@ footer{
 .brand-name {
   font-family: 'Lobster', cursive;
   font-size: 2rem;
+  font-weight: 400;
 }
 
 .social-container {
@@ -31,4 +32,15 @@ footer{
 
 .social:hover{
   cursor: pointer;
+}
+
+.author{
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.author-text{
+  font-size: 1rem;
+  font-weight: 200;
 }

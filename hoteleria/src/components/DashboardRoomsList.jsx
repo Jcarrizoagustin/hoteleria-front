@@ -42,44 +42,55 @@ function DashboardRoomsList() {
 							className='btn-option'
 							onClick={() => {
 								const value = confirm(
-									'Desea editar la habitacion ?' + el.id + el.nombre
+									'Desea editar la habitacion ' +
+										el.id +
+										': ' +
+										el.nombre +
+										' ?'
 								)
 								if (value) {
-									redirect(`/habitaciones/listado/edit/${el.id}`)
+									redirect(`/dashboard/habitaciones/edit/${el.id}`)
 								}
 							}}
 						>
-							<BiEdit />
+							<BiEdit size={'1.5rem'} />
 						</button>
 						<button
 							style={{ backgroundColor: 'red' }}
 							className='btn-option'
 							onClick={async () => {
-								try {
-									const res = await fetch(
-										`http://localhost:8080/api/v1/habitaciones/${el.id}`,
-										{
-											method: 'DELETE',
-											headers: {
-												'Content-Type': 'application/json',
-												Authorization: 'Basic ' + token,
-											},
-										}
-									)
+								const option = confirm(
+									'Desea eliminar la habitacion ' +
+										el.nombre +
+										' ? Todas las reservas con esta habitacion tambien seran eliminadas.'
+								)
+								if (option) {
+									try {
+										const res = await fetch(
+											`http://localhost:8080/api/v1/habitaciones/${el.id}`,
+											{
+												method: 'DELETE',
+												headers: {
+													'Content-Type': 'application/json',
+													Authorization: 'Basic ' + token,
+												},
+											}
+										)
 
-									if (!res.ok) {
-										const resJson = await res.json()
-										throw new Error(resJson.message)
-									} else {
-										console.log('Habitacion eliminada')
-										getData()
+										if (!res.ok) {
+											const resJson = await res.json()
+											throw new Error(resJson.message)
+										} else {
+											console.log('Habitacion eliminada')
+											getData()
+										}
+									} catch (err) {
+										console.error(err)
 									}
-								} catch (err) {
-									console.error(err)
 								}
 							}}
 						>
-							<AiOutlineDelete />
+							<AiOutlineDelete size={'1.5rem'} />
 						</button>
 						<button
 							style={{ backgroundColor: 'orange' }}
@@ -88,7 +99,7 @@ function DashboardRoomsList() {
 								alert('Desea desactivar la habitacion ?' + el.id + el.nombre)
 							}
 						>
-							<GiSightDisabled />
+							<GiSightDisabled size={'1.5rem'} />
 						</button>
 					</div>
 				</div>

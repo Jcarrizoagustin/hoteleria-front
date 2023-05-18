@@ -1,49 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { useFormik } from 'formik'
 import { useToken } from '../../hooks/useToken'
+
 import PropTypes from 'prop-types'
 import './NewRoomForm.css'
 
-function EditRoomForm({ id }) {
-	const initialValues = {
-		nombre: '',
-		precio: '',
-		cantidadCamas: '',
-		capacidad: '',
-		urlImg: '',
-	}
+function EditRoomForm({ room }) {
 	const { token } = useToken()
-	const [room, setRoom] = useState(initialValues)
-	const getData = async () => {
-		try {
-			const response = await fetch(
-				`http://localhost:8080/api/v1/habitaciones/${id}`,
-				{
-					method: 'GET',
-					headers: {
-						'Content-Type': 'application/json',
-						Authorization: 'Basic ' + token,
-					},
-				}
-			)
-			const data = await response.json()
-			if (!response.ok) {
-				throw new Error(data.message)
-			} else {
-				setRoom(data)
-			}
-		} catch (err) {
-			console.error(err)
-		}
-	}
-	useEffect(() => {
-		getData()
-	}, [])
 
 	const editRoom = async values => {
 		try {
 			const response = await fetch(
-				`http://localhost:8080/api/v1/habitaciones/${id}`,
+				`http://localhost:8080/api/v1/habitaciones/${room.id}`,
 				{
 					method: 'PUT',
 					headers: {
@@ -201,13 +169,13 @@ function EditRoomForm({ id }) {
 						id='mar'
 						className='data-input'
 						name='mar'
-						value={formik.values.mar}
+						checked={formik.values.mar}
 						onChange={formik.handleChange}
 					/>
 				</div>
 				<div className='btn-submit'>
 					<button type='submit' className='submit'>
-						Registrar
+						Editar
 					</button>
 				</div>
 			</div>
@@ -215,7 +183,7 @@ function EditRoomForm({ id }) {
 	)
 }
 EditRoomForm.propTypes = {
-	id: PropTypes.number,
+	room: PropTypes.object,
 }
 
 export default EditRoomForm

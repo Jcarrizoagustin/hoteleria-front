@@ -26,7 +26,6 @@ function RentContainer() {
 					throw new Error(errorData.message)
 				} else {
 					if (data.status === 200) {
-						console.log(data)
 						const finalData = await data.json()
 						setReservas(finalData)
 					} else {

@@ -14,16 +14,19 @@ import DashboardClients from './components/DashboardClients'
 import NewRoomForm from './components/Forms/NewRoomForm'
 import DashboardRoom from './components/DashboardRoom'
 import DashboardRoomsList from './components/DashboardRoomsList'
-import EditRoomForm from './components/Forms/EditRoomForm'
+import NotFoundPage from './components/NotFoundPage'
+import UnauthorizedPage from './components/UnauthorizedPage'
+import EditRoom from './components/EditRoom'
+import DashboardRent from './components/DashboardRent'
 function App() {
 	const { user, isAdmin, actualizarUser, eliminarUser } = useUser()
-	const { id } = useParams()
 
 	return (
 		<div className='App'>
 			<BrowserRouter>
 				<Header user={user} logout={eliminarUser} />
 				<Routes>
+					<Route path='*' element={<NotFoundPage />} />
 					<Route path='/' element={<Home />} />
 					<Route path='/habitaciones' element={<RoomContainer user={user} />} />
 					<Route path='/registro' element={<RegisterForm />} />
@@ -35,22 +38,16 @@ function App() {
 					<Route path='/reservas' element={<RentContainer />} />
 					<Route
 						path='/dashboard'
-						element={
-							isAdmin ? (
-								<Dashboard />
-							) : (
-								<LoginForm updateUser={actualizarUser} />
-							)
-						}
+						element={isAdmin ? <Dashboard /> : <UnauthorizedPage />}
 					>
 						<Route path='clientes' element={<DashboardClients />} />
 
 						<Route path='habitaciones' element={<DashboardRoom />}>
 							<Route path='registro' element={<NewRoomForm />} />
-							<Route path='listado' element={<DashboardRoomsList />}>
-								<Route path='edit/:id' element={<EditRoomForm id={id} />} />
-							</Route>
+							<Route path='listado' element={<DashboardRoomsList />} />
+							<Route path='edit/:id' element={<EditRoom />} />
 						</Route>
+						<Route path='reservas' element={<DashboardRent />} />
 					</Route>
 				</Routes>
 			</BrowserRouter>

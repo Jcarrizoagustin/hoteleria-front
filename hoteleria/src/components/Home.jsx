@@ -5,7 +5,7 @@ function Home() {
 			<div className='home-card'>
 				<div className='home-card-img'>
 					<img
-						src='https://static4.depositphotos.com/1005730/373/i/450/depositphotos_3735885-stock-photo-hotel-lobby.jpg'
+						src='https://img.freepik.com/fotos-premium/minsk-bielorrusia-agosto-2017-columnas-recepcion-salon-habitacion-hotel-lujo-moderno_97694-6573.jpg?w=2000'
 						alt=''
 					/>
 				</div>
@@ -32,13 +32,13 @@ function Home() {
 							Spark{' '}
 							<span style={{ fontSize: '1rem', fontWeight: '200' }}>Hotel</span>
 						</span>{' '}
-						tenemos una amplia variedad de habitaciones con temática. Encontrá
-						la que más se adapte con vos.
+						tenemos una amplia variedad de habitaciones. Encontrá la que más se
+						adapte con vos.
 					</p>
 				</div>
 				<div className='home-card-img'>
 					<img
-						src='https://img.freepik.com/fotos-premium/minsk-bielorrusia-agosto-2017-columnas-recepcion-salon-habitacion-hotel-lujo-moderno_97694-6573.jpg?w=2000'
+						src='https://b7q5h9f5.rocketcdn.me/wp-content/uploads/2021/12/iStock-907621754-e1639556826504-1024x576.jpg'
 						alt=''
 					/>
 				</div>

@@ -1,13 +1,13 @@
 .dashboard-room-list {
-  
+  gap: 3rem;
 }
 
 .room-list {
   width: 80%;
   margin: 1rem auto;
   display: flex;
+  justify-content: space-around;
   align-items: center;
-  gap: 3rem;
 }
 
 .buttons {

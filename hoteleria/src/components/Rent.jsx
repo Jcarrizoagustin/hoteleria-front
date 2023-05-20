@@ -46,7 +46,13 @@ function Rent({ obj, updateRent }) {
 				<h4>{obj.fechaSalida}</h4>
 			</div>
 			<h5 className='total-title'>
-				Total: <span className='total-price'>$ {obj.precioTotal}</span>
+				Total:{' '}
+				<span className='total-price'>
+					{new Intl.NumberFormat('es-AR', {
+						style: 'currency',
+						currency: 'ARS',
+					}).format(obj.precioTotal)}
+				</span>
 			</h5>
 			<button onClick={handleCancelRent} className='btn-cancelar'>
 				Cancelar

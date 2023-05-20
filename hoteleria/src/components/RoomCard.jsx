@@ -42,7 +42,12 @@ function RoomCard({
 				</div>
 				<div className='habitacion-footer'>
 					<h4 className='price-bg-light'>
-						$<span className='price'>{precio}</span>
+						<span className='price'>
+							{new Intl.NumberFormat('es-AR', {
+								style: 'currency',
+								currency: 'ARS',
+							}).format(precio)}
+						</span>
 					</h4>
 					<span className='price-description'>por noche</span>
 					{showButton ? (

@@ -11,7 +11,7 @@ function RoomContainer({ user }) {
 	const [habitaciones, setHabitaciones] = useState([])
 	const [showPanel, setShowPanel] = useState(false)
 	const [habitacionesReserva, setHabitacionesReserva] = useState([])
-	const [fechas, setFechas] = useState({})
+	const [fechas, setFechas] = useState({ fechaEntrada: '', fechaSalida: '' })
 	const { token } = useToken()
 	const redirect = useNavigate()
 
@@ -49,9 +49,26 @@ function RoomContainer({ user }) {
 		setHabitacionesReserva(nuevaLista)
 	}
 
+	const checkRoomInReserva = room => {
+		let flag = false
+		if (habitacionesReserva.length === 0) {
+			return false
+		}
+		habitacionesReserva.forEach(el => {
+			if (room.id === el.id) {
+				flag = true
+			}
+		})
+		return flag
+	}
+
 	const agregarHabitacion = room => {
 		console.log(room)
-		setHabitacionesReserva([...habitacionesReserva, room])
+		if (!checkRoomInReserva(room)) {
+			setHabitacionesReserva([...habitacionesReserva, room])
+		} else {
+			console.log('Habitacion ya esta agregada')
+		}
 	}
 
 	const getHabitacionesAsync = async () => {
@@ -106,6 +123,7 @@ function RoomContainer({ user }) {
 					habitaciones={habitacionesReserva}
 					handleClickButton={eliminarHabitacion}
 					confirm={handleConfirm}
+					fechas={fechas}
 				/>
 			)}
 		</div>

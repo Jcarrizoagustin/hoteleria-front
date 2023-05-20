@@ -1,7 +1,6 @@
 import './Footer.css'
 import { BsInstagram, BsWhatsapp } from 'react-icons/bs'
 import { RiFacebookFill } from 'react-icons/ri'
-import { AiOutlineCopyrightCircle } from 'react-icons/ai'
 function Footer() {
 	return (
 		<footer>
@@ -38,9 +37,17 @@ function Footer() {
 				</a>
 			</div>
 			<div className='author'>
-				<AiOutlineCopyrightCircle />
 				<h3 className='author-text'>
-					Desarrollado por: Agustin Carrizo - 2023
+					Desarrollado por:{' '}
+					<a
+						href='https://www.linkedin.com/in/jcarrizoagustin/'
+						target='_blank'
+						rel='noreferrer'
+						style={{ color: 'white' }}
+					>
+						Agustin Carrizo
+					</a>{' '}
+					- 2023
 				</h3>
 			</div>
 		</footer>

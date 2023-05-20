@@ -2,48 +2,49 @@ import './NuevaReserva.css'
 import { AiOutlineClose } from 'react-icons/ai'
 import RoomCard from './RoomCard'
 import PropTypes from 'prop-types'
-const data = {
-	id: 1,
-	nombre: 'Deluxe',
-	urlImg:
-		'https://www.cataloniahotels.com/es/blog/wp-content/uploads/2016/05/habitaci%C3%B3n-doble-catalonia-620x412.jpg',
-	precio: 15200.0,
-	capacidad: 2,
-	descripciones: [{ detalle: 'Vista al mar' }, { detalle: 'Wifi' }],
-	cantidadCamas: 1,
-	alquilar: false,
-}
-const data2 = {
-	id: 2,
-	nombre: 'Premium',
-	urlImg:
-		'https://www.estelarcartagenadeindias.com/cache/84/de/84dec6dbaad46333fab841791c1a0469.jpg',
-	precio: 23000.0,
-	capacidad: 2,
-	descripciones: [
-		{ detalle: 'Vista al mar' },
-		{ detalle: 'Wifi' },
-		{ detalle: 'Servicio al cuarto' },
-	],
-	cantidadCamas: 1,
-	alquilar: false,
-}
-
 function NuevaReserva({
 	changeShow,
 	habitaciones,
 	handleClickButton,
 	confirm,
+	fechas,
 }) {
+	const calcularTotal = () => {
+		const divisor = 1000 * 60 * 60 * 24
+		const date1 = new Date(fechas.fechaIngreso)
+		const date2 = new Date(fechas.fechaSalida)
+		const days = (date2.getTime() - date1.getTime()) / divisor
+		let total = 0.0
+		if (habitaciones.length === 0) {
+			return new Intl.NumberFormat('es-AR', {
+				style: 'currency',
+				currency: 'ARS',
+			}).format(0)
+		}
+		if (habitaciones.length === 1) {
+			return new Intl.NumberFormat('es-AR', {
+				style: 'currency',
+				currency: 'ARS',
+			}).format(habitaciones[0].precio * days)
+		}
+		habitaciones.forEach(el => {
+			total += parseFloat(el.precio)
+		})
+		return new Intl.NumberFormat('es-AR', {
+			style: 'currency',
+			currency: 'ARS',
+		}).format(total * days)
+	}
+
 	return (
 		<div className={'reserva-container'}>
 			<AiOutlineClose onClick={changeShow} className='icon-close' />
 			<div className='reserva-fechas'>
 				<h2 className='reserva-fecha'>
-					Fecha entrada: <span className='fecha'>28/04/2023</span>
+					Fecha entrada: <span className='fecha'>{fechas.fechaIngreso}</span>
 				</h2>
 				<h2 className='reserva-fecha'>
-					Fecha salida: <span className='fecha'>05/05/2023</span>
+					Fecha salida: <span className='fecha'>{fechas.fechaSalida}</span>
 				</h2>
 			</div>
 			<div className='reserva-habitaciones'>
@@ -58,9 +59,7 @@ function NuevaReserva({
 				))}
 			</div>
 			<div className='reserva-footer'>
-				<h4 className='reserva-footer-total'>
-					Total: {data.precio + data2.precio}
-				</h4>
+				<h4 className='reserva-footer-total'>Total: {calcularTotal()}</h4>
 				<button onClick={confirm} className='reserva-btn confirmar'>
 					Confirmar
 				</button>
@@ -73,6 +72,7 @@ NuevaReserva.propTypes = {
 	habitaciones: PropTypes.array,
 	handleClickButton: PropTypes.func,
 	confirm: PropTypes.func,
+	fechas: PropTypes.object,
 }
 
 export default NuevaReserva

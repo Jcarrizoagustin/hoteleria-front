@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Rent from './Rent'
-import { useFetch } from '../hooks/useFetch'
 
 function RentContainer() {
 	const redirect = useNavigate()

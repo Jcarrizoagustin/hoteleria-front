@@ -2,6 +2,7 @@ import './RegisterForm.css'
 import { Link, useNavigate } from 'react-router-dom'
 import { useFormik } from 'formik'
 import ClientePost from '../../model/ClientePost'
+import { toast, ToastContainer } from 'react-toastify'
 
 function RegisterForm() {
 	const redirect = useNavigate()
@@ -19,6 +20,7 @@ function RegisterForm() {
 			throw new Error(error.message)
 		}
 		const jsonData = await response.json()
+		toast.success('Usuario creado con éxito. Bienvenido/a')
 		console.log(jsonData)
 		redirect('/login')
 	}
@@ -140,6 +142,7 @@ function RegisterForm() {
 					<h5 className='inicia-sesion'>Ya tienes cuenta ? Inicia sesion</h5>
 				</Link>
 			</div>
+			<ToastContainer />
 		</form>
 	)
 }

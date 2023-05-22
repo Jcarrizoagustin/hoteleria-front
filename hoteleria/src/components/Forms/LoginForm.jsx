@@ -3,12 +3,14 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useFormik } from 'formik'
 import PropTypes from 'prop-types'
 import { useToken } from '../../hooks/useToken'
+import { toast, ToastContainer } from 'react-toastify'
 function LoginForm({ updateUser }) {
 	const redirect = useNavigate()
 	const { changeToken } = useToken()
 
 	function sucess(obj, data) {
 		// Obj representa el ususario logueado en la respuesta del backend
+
 		updateUser(obj)
 		const ep = data.email + ':' + data.password
 		changeToken(btoa(ep))
@@ -26,10 +28,12 @@ function LoginForm({ updateUser }) {
 			})
 			if (!fetchData.ok) {
 				const errorData = await fetchData.json()
+				toast.error(errorData.message, { containerId: 'Login' })
 				throw new Error(errorData.message)
 			}
-			console.log('success')
+
 			const finalData = await fetchData.json()
+			toast.success('Bienvenido/a ' + finalData.nombre, { containerId: 'Home' })
 			sucess(finalData, data)
 		} catch (error) {
 			console.error(error.toString())
@@ -82,6 +86,7 @@ function LoginForm({ updateUser }) {
 					<h5 className='inicia-sesion'>No tienes cuenta ? Registrate</h5>
 				</Link>
 			</div>
+			<ToastContainer enableMultiContainer={true} containerId={'Login'} />
 		</form>
 	)
 }

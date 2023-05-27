@@ -6,6 +6,7 @@ import NuevaReserva from './NuevaReserva'
 import { useToken } from '../hooks/useToken'
 import PropTypes from 'prop-types'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 function RoomContainer({ user }) {
 	const [habitaciones, setHabitaciones] = useState([])
@@ -23,17 +24,26 @@ function RoomContainer({ user }) {
 			fechaIngreso: fechas.fechaIngreso,
 			fechaSalida: fechas.fechaSalida,
 		}
-		const data = await fetch('http://localhost:8080/api/v1/reservas', {
-			method: 'POST',
-			headers: {
-				Authorization: 'Basic ' + token,
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(bodyFetch),
-		})
-		const json = await data.json()
-		setHabitacionesReserva([])
-		console.log(json)
+		try {
+			const data = await fetch('http://localhost:8080/api/v1/reservas', {
+				method: 'POST',
+				headers: {
+					Authorization: 'Basic ' + token,
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(bodyFetch),
+			})
+			const json = await data.json()
+			if (data.ok) {
+				setHabitacionesReserva([])
+				toast.success('Reserva realizada con éxito')
+				console.log(json)
+			} else {
+				throw new Error(json.message)
+			}
+		} catch (error) {
+			toast.error('Ocurrio un error')
+		}
 	}
 	const asignarFechas = values => {
 		setFechas(values)

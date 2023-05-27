@@ -40,7 +40,7 @@ function Footer() {
 				<h3 className='author-text'>
 					Desarrollado por:{' '}
 					<a
-						href='https://www.linkedin.com/in/jcarrizoagustin/'
+						href='https://agustincarrizo.netlify.app/'
 						target='_blank'
 						rel='noreferrer'
 						style={{ color: 'white' }}

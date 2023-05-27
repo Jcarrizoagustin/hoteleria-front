@@ -1,6 +1,7 @@
 import './Rent.css'
 import RoomCard from './RoomCard'
 import PropTypes from 'prop-types'
+import { toast } from 'react-toastify'
 
 function Rent({ obj, updateRent }) {
 	const handleCancelRent = async () => {
@@ -18,11 +19,22 @@ function Rent({ obj, updateRent }) {
 						},
 					}
 				)
-				if (!response.ok) {
+				if (response.ok) {
+					updateRent()
+					toast.success('Reserva eliminada con éxito', {
+						position: 'top-right',
+						autoClose: 3000,
+						hideProgressBar: false,
+						closeOnClick: true,
+						pauseOnHover: false,
+						draggable: false,
+						progress: undefined,
+						theme: 'light',
+					})
+				} else {
 					const error = await response.json()
 					throw new Error(error.message)
 				}
-				updateRent()
 			} catch (e) {
 				console.error(e.toString())
 			}

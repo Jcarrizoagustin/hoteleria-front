@@ -1,9 +1,13 @@
 import './Home.css'
-import { ToastContainer } from 'react-toastify'
+import { ToastContainer, toast } from 'react-toastify'
 function Home() {
 	return (
 		<div className='home-container'>
-			<ToastContainer enableMultiContainer={true} containerId={'Home'} />
+			<ToastContainer
+				enableMultiContainer={true}
+				containerId={'HOME'}
+				position={toast.POSITION.TOP_RIGHT}
+			/>
 			<div className='home-card'>
 				<div className='home-card-img'>
 					<img

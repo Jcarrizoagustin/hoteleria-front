@@ -26,17 +26,35 @@ function LoginForm({ updateUser }) {
 					'Content-Type': 'application/json',
 				},
 			})
-			if (!fetchData.ok) {
-				const errorData = await fetchData.json()
-				toast.error(errorData.message, { containerId: 'Login' })
-				throw new Error(errorData.message)
-			}
-
 			const finalData = await fetchData.json()
-			toast.success('Bienvenido/a ' + finalData.nombre, { containerId: 'Home' })
-			sucess(finalData, data)
+			if (fetchData.ok) {
+				sucess(finalData, data)
+				toast.success('🦄 Inicio de sesion !', {
+					position: 'top-right',
+					autoClose: 3000,
+					hideProgressBar: false,
+					closeOnClick: true,
+					pauseOnHover: true,
+					draggable: true,
+					progress: undefined,
+					theme: 'light',
+					containerId: 'HOME',
+				})
+			} else {
+				throw new Error(finalData.message)
+			}
 		} catch (error) {
-			console.error(error.toString())
+			toast.error('Ocurrió un error!', {
+				position: 'top-right',
+				autoClose: 3000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: false,
+				draggable: false,
+				progress: undefined,
+				theme: 'light',
+				containerId: 'LOGIN',
+			})
 		}
 	}
 
@@ -86,7 +104,11 @@ function LoginForm({ updateUser }) {
 					<h5 className='inicia-sesion'>No tienes cuenta ? Registrate</h5>
 				</Link>
 			</div>
-			<ToastContainer enableMultiContainer={true} containerId={'Login'} />
+			<ToastContainer
+				enableMultiContainer={true}
+				containerId={'LOGIN'}
+				position={toast.POSITION.TOP_RIGHT}
+			/>
 		</form>
 	)
 }

@@ -38,13 +38,17 @@
 }
 
 
-
-
 .reserva-habitaciones {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
   overflow-y: scroll;
 }
 
 .reserva-footer{
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
 }
@@ -70,4 +74,10 @@
   background-color: white;
   color: rgb(67, 0, 210);
   cursor: pointer;
+}
+
+@media screen and (max-width:1500px){
+  .reserva-container{
+    width: 90%;
+  }
 }

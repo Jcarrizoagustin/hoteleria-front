@@ -2,6 +2,7 @@ import './NuevaReserva.css'
 import { AiOutlineClose } from 'react-icons/ai'
 import RoomCard from './RoomCard'
 import PropTypes from 'prop-types'
+import { ToastContainer } from 'react-toastify'
 function NuevaReserva({
 	changeShow,
 	habitaciones,
@@ -64,6 +65,7 @@ function NuevaReserva({
 					Confirmar
 				</button>
 			</div>
+			<ToastContainer />
 		</div>
 	)
 }

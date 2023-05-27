@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Rent from './Rent'
+import { ToastContainer } from 'react-toastify'
 
 function RentContainer() {
 	const redirect = useNavigate()
@@ -51,6 +52,7 @@ function RentContainer() {
 			) : (
 				<h2>No hay resultados</h2>
 			)}
+			<ToastContainer />
 		</div>
 	)
 }

@@ -1,5 +1,5 @@
 import './DashboardHeader.css'
-import { Link } from 'react-router-dom'
+import DashboardButton from './Dashboard/DashboardButton'
 
 function DashboardHeader() {
 	return (
@@ -7,18 +7,13 @@ function DashboardHeader() {
 			<h2 className='dashboard-title'>Dashboard</h2>
 			<div>
 				<ul className='dashboard-menu'>
-					<Link to={'/dashboard/clientes'} style={{ textDecoration: 'none' }}>
-						<li>Clientes</li>
-					</Link>
-					<Link
+					<DashboardButton to={'/dashboard/clientes'} title={'Clientes'} />
+					<DashboardButton
 						to={'/dashboard/habitaciones'}
-						style={{ textDecoration: 'none' }}
-					>
-						<li>Habitaciones</li>
-					</Link>
-					<Link to={'/dashboard/reservas'} style={{ textDecoration: 'none' }}>
-						<li>Reservas</li>
-					</Link>
+						title={'Habitaciones'}
+					/>
+					<DashboardButton to={'/dashboard/reservas'} title={'Reservas'} />
+					<DashboardButton to={'/'} title={'Home'} />
 				</ul>
 			</div>
 		</div>

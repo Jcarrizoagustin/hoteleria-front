@@ -6,6 +6,7 @@ import { GiSightDisabled } from 'react-icons/gi'
 import { AiOutlineDelete } from 'react-icons/ai'
 import { BiEdit } from 'react-icons/bi'
 import { useNavigate } from 'react-router-dom'
+import BtnActionRoom from './Dashboard/BtnActionRoom'
 
 function DashboardRoomsList() {
 	const [rooms, setRooms] = useState([])
@@ -28,6 +29,47 @@ function DashboardRoomsList() {
 		}
 	}
 
+	const handleClickEdit = el => {
+		const value = confirm(
+			'Desea editar la habitacion ' + el.id + ': ' + el.nombre + ' ?'
+		)
+		if (value) {
+			redirect(`/dashboard/habitaciones/edit/${el.id}`)
+		}
+	}
+
+	const handleClickDelete = async el => {
+		const option = confirm(
+			'Desea eliminar la habitacion ' +
+				el.nombre +
+				' ? Todas las reservas con esta habitacion tambien seran eliminadas.'
+		)
+		if (option) {
+			try {
+				const res = await fetch(
+					`http://localhost:8080/api/v1/habitaciones/${el.id}`,
+					{
+						method: 'DELETE',
+						headers: {
+							'Content-Type': 'application/json',
+							Authorization: 'Basic ' + token,
+						},
+					}
+				)
+
+				if (!res.ok) {
+					const resJson = await res.json()
+					throw new Error(resJson.message)
+				} else {
+					console.log('Habitacion eliminada')
+					getData()
+				}
+			} catch (err) {
+				console.error(err)
+			}
+		}
+	}
+
 	useEffect(() => {
 		getData()
 	}, [])
@@ -37,70 +79,26 @@ function DashboardRoomsList() {
 				<div key={el.id} className='room-list'>
 					<RoomCard {...el} />
 					<div className='buttons'>
-						<button
-							style={{ backgroundColor: 'green' }}
-							className='btn-option'
-							onClick={() => {
-								const value = confirm(
-									'Desea editar la habitacion ' +
-										el.id +
-										': ' +
-										el.nombre +
-										' ?'
-								)
-								if (value) {
-									redirect(`/dashboard/habitaciones/edit/${el.id}`)
-								}
-							}}
+						<BtnActionRoom
+							text={'Editar'}
+							handleClick={() => handleClickEdit(el)}
 						>
-							<BiEdit size={'1.5rem'} />
-						</button>
-						<button
-							style={{ backgroundColor: 'red' }}
-							className='btn-option'
-							onClick={async () => {
-								const option = confirm(
-									'Desea eliminar la habitacion ' +
-										el.nombre +
-										' ? Todas las reservas con esta habitacion tambien seran eliminadas.'
-								)
-								if (option) {
-									try {
-										const res = await fetch(
-											`http://localhost:8080/api/v1/habitaciones/${el.id}`,
-											{
-												method: 'DELETE',
-												headers: {
-													'Content-Type': 'application/json',
-													Authorization: 'Basic ' + token,
-												},
-											}
-										)
-
-										if (!res.ok) {
-											const resJson = await res.json()
-											throw new Error(resJson.message)
-										} else {
-											console.log('Habitacion eliminada')
-											getData()
-										}
-									} catch (err) {
-										console.error(err)
-									}
-								}
-							}}
+							<BiEdit />
+						</BtnActionRoom>
+						<BtnActionRoom
+							text={'Eliminar'}
+							handleClick={() => handleClickDelete(el)}
 						>
-							<AiOutlineDelete size={'1.5rem'} />
-						</button>
-						<button
-							style={{ backgroundColor: 'orange' }}
-							className='btn-option'
-							onClick={() =>
+							<AiOutlineDelete />
+						</BtnActionRoom>
+						<BtnActionRoom
+							text={'Ocultar'}
+							handleClick={() =>
 								alert('Desea desactivar la habitacion ?' + el.id + el.nombre)
 							}
 						>
 							<GiSightDisabled size={'1.5rem'} />
-						</button>
+						</BtnActionRoom>
 					</div>
 				</div>
 			))}

@@ -1,23 +1,19 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import './DashboardRoomMenu.css'
+import DashboardButton from './Dashboard/DashboardButton'
 
 function DashboardRoomMenu() {
 	return (
 		<nav>
 			<ul className='dashboard-room-menu'>
-				<Link
+				<DashboardButton
 					to={'/dashboard/habitaciones/registro'}
-					style={{ textDecoration: 'none' }}
-				>
-					<li className='dashboard-room-menu-link'>Nueva Habitacion</li>
-				</Link>
-				<Link
+					title={'Nueva Habitacion'}
+				/>
+				<DashboardButton
 					to={'/dashboard/habitaciones/listado'}
-					style={{ textDecoration: 'none' }}
-				>
-					<li className='dashboard-room-menu-link'>Listado</li>
-				</Link>
+					title={'Listado'}
+				/>
 			</ul>
 		</nav>
 	)

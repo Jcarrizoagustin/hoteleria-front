@@ -1,0 +1,27 @@
+.btn {
+    border-radius: .5rem;
+    padding: .5rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.btn:hover{
+    cursor: pointer;
+    opacity: .9;
+}
+
+.edit {
+    color: white;
+    background-color: #066699;
+}
+
+.delete {
+    color: white;
+    background-color: #e8373e;
+}
+
+.hiden {
+    background-color: #eaa353;
+}

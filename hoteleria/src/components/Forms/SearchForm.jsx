@@ -24,9 +24,18 @@ function SearchForm({ update, fechas }) {
 				)
 			)
 	}
+
+	function formatDateToYYYYMMDD(date) {
+		const year = date.getFullYear()
+		const month = String(date.getMonth() + 1).padStart(2, '0')
+		const day = String(date.getDate()).padStart(2, '0')
+
+		return `${year}-${month}-${day}`
+	}
+
 	const formik = useFormik({
 		initialValues: {
-			fechaEntrada: '',
+			fechaEntrada: formatDateToYYYYMMDD(new Date()),
 			fechaSalida: '',
 			precioMax: '',
 			personas: '',
@@ -34,7 +43,7 @@ function SearchForm({ update, fechas }) {
 		onSubmit: values => {
 			getData(values)
 			const { fechaEntrada, fechaSalida } = values
-			fechas({ fechaIngreso: fechaEntrada, fechaSalida: fechaSalida })
+			fechas({ fechaIngreso: fechaEntrada, fechaSalida })
 			console.log(JSON.stringify(values, null, 2))
 		},
 	})

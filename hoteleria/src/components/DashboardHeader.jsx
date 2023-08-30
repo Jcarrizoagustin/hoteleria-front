@@ -13,7 +13,6 @@ function DashboardHeader() {
 						title={'Habitaciones'}
 					/>
 					<DashboardButton to={'/dashboard/reservas'} title={'Reservas'} />
-					<DashboardButton to={'/'} title={'Home'} />
 				</ul>
 			</div>
 		</div>

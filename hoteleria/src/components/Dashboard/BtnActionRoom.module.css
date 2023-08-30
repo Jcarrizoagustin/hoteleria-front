@@ -1,27 +1,27 @@
 .btn {
-    border-radius: .5rem;
-    padding: .5rem;
-    height: 2rem;
-    display: flex;
-    align-items: center;
-    gap: .5rem;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.btn:hover{
-    cursor: pointer;
-    opacity: .9;
+.btn:hover {
+  cursor: pointer;
+  opacity: 0.9;
 }
 
 .edit {
-    color: white;
-    background-color: #066699;
+  color: white;
+  background-color: #066699;
 }
 
 .delete {
-    color: white;
-    background-color: #e8373e;
+  color: white;
+  background-color: #e8373e;
 }
 
 .hiden {
-    background-color: #eaa353;
+  background-color: #eaa353;
 }

@@ -1,6 +1,6 @@
 .search-form-container {
   border-radius: 2rem;
-  background-color:rgba(67, 0, 210,1) ;
+  background-color: rgba(67, 0, 210, 1);
   max-width: 60rem;
   width: 90%;
   margin: 1rem auto;
@@ -9,20 +9,20 @@
   align-items: center;
   padding: 2rem;
   color: white;
-  
 }
 
-.fechas, .filtros {
+.fechas,
+.filtros {
   display: flex;
   width: 17rem;
   align-items: center;
 }
 
-.fechas{
+.fechas {
   min-width: 300px;
 }
 
-.filtros{
+.filtros {
   margin-top: 1rem;
   justify-content: space-evenly;
 }
@@ -30,18 +30,18 @@
 .fecha-text {
   letter-spacing: 2px;
 }
-.entrada{
-  border-top-left-radius: .5rem;
-  border-bottom-left-radius: .5rem;
+.entrada {
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
   border-right-color: #f2f2f2;
 }
 .text {
-  font-size: .8rem;
+  font-size: 0.8rem;
 }
 
-.salida{
-  border-top-right-radius: .5rem;
-  border-bottom-right-radius: .5rem;
+.salida {
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
   border-left-color: #f2f2f2;
 }
 
@@ -50,17 +50,16 @@
   width: 50%;
 }
 
-.input-filter{
+.input-filter {
   width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  
 }
 
 .input-filter > input {
   width: 50%;
-  border-radius: .3rem;
+  border-radius: 0.3rem;
 }
 
 .input-date > input {
@@ -76,7 +75,7 @@
   border-radius: 1.5rem;
   color: white;
   background-color: rgb(67, 0, 210);
-  transition: .5s ease-out;
+  transition: 0.5s ease-out;
 }
 
 .search-button:hover {
@@ -84,20 +83,18 @@
   border: 1px solid rgb(67, 0, 210);
   background-color: white;
   color: rgb(67, 0, 210);
-  transition: .3s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 
-
-@media screen and (max-width:400px){
-  .fechas{
+@media screen and (max-width: 400px) {
+  .fechas {
     flex-direction: column;
-    gap: .5rem;
+    gap: 0.5rem;
     min-width: 100px;
     width: 80%;
   }
-  .entrada, .salida{
+  .entrada,
+  .salida {
     border-radius: 1rem;
   }
-  
-  
 }

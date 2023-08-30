@@ -1,4 +1,4 @@
-.dashboard-room-menu{
+.dashboard-room-menu {
   list-style: none;
   display: flex;
   align-items: center;
@@ -6,11 +6,11 @@
   text-decoration: none;
 }
 
-.dashboard-room-menu-link{
-  margin: .5rem 2rem;
+.dashboard-room-menu-link {
+  margin: 0.5rem 2rem;
   color: black;
 }
 
-.dashboard-room-menu-link:hover{
+.dashboard-room-menu-link:hover {
   cursor: pointer;
 }

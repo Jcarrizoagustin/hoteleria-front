@@ -1,4 +1,4 @@
-footer{
+footer {
   width: 100%;
   color: white;
   background-color: rgb(67, 0, 210);
@@ -26,21 +26,21 @@ footer{
   color: white;
   text-decoration: none;
   display: flex;
-  gap: .5rem;
+  gap: 0.5rem;
   align-items: center;
 }
 
-.social:hover{
+.social:hover {
   cursor: pointer;
 }
 
-.author{
+.author {
   margin-top: 1rem;
   display: flex;
   align-items: center;
 }
 
-.author-text{
+.author-text {
   font-size: 1rem;
   font-weight: 200;
 }

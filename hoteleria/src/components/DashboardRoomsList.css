@@ -15,7 +15,7 @@
   gap: 1rem;
 }
 
-.btn-option{
+.btn-option {
   border-radius: 1rem;
   height: 3rem;
   width: 3rem;
@@ -23,6 +23,6 @@
   color: white;
 }
 
-.btn-option:hover{
+.btn-option:hover {
   cursor: pointer;
 }

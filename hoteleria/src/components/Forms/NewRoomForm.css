@@ -1,14 +1,14 @@
 .new-room-container {
-	width: 100%;
-	height: 100%;
-	margin: 2rem auto;
+  width: 100%;
+  height: 100%;
+  margin: 2rem auto;
 }
 
-.new-room-title{
+.new-room-title {
   font-size: 2rem;
   margin-bottom: 2rem;
 }
 
-.input{
-  margin-bottom: .5rem;
+.input {
+  margin-bottom: 0.5rem;
 }

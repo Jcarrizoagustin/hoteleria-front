@@ -1,29 +1,28 @@
-import {useState,useEffect} from 'react'
+import { useState, useEffect } from 'react'
 
-export function useFetch({url,method,headers,dataBody}) {
-  const [data,setData] = useState([])
-
+export function useFetch({ url, method, headers, dataBody }) {
+  const [data, setData] = useState([])
 
   const fetchData = async () => {
-    try{
-      const response = await fetch(url,{
+    try {
+      const response = await fetch(url, {
         method,
-        headers
+        headers,
       })
       const json = await response.json()
-      if(!response.ok){
+      if (!response.ok) {
         throw new Error(json.message)
-      }else{
+      } else {
         setData(json)
       }
-    }catch(err){
+    } catch (err) {
       console.log(err)
     }
   }
 
   useEffect(() => {
     fetchData()
-  },[])
+  }, [])
 
-  return {data}
+  return { data }
 }

@@ -28,17 +28,16 @@
   padding: 2rem;
 }
 
-.home-card-description-title{
- font-size: 2rem;
+.home-card-description-title {
+  font-size: 2rem;
 }
 
-.home-card-description-text{
+.home-card-description-text {
   font-size: 1.5rem;
   margin-top: 1rem;
 }
 
-
-@media screen and (max-width: 1000px){
+@media screen and (max-width: 1000px) {
   .home-card {
     flex-direction: column;
     height: auto;
@@ -55,8 +54,7 @@
     text-align: center;
   }
 
-  .home-card:nth-child(even){
+  .home-card:nth-child(even) {
     flex-direction: column-reverse;
   }
-
 }

@@ -1,5 +1,5 @@
-export default class ClientePost{
-  constructor(nombre,apellido, email,telefono,password){
+export default class ClientePost {
+  constructor(nombre, apellido, email, telefono, password) {
     this.nombre = nombre
     this.apellido = apellido
     this.email = email

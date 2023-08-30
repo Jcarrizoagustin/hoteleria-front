@@ -4,27 +4,25 @@
   border-radius: 1rem;
   width: 50%;
   height: 90vh;
-  position:fixed;
+  position: fixed;
   top: 0;
   right: 0px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: .2s ease-in-out;
+  transition: 0.2s ease-in-out;
   padding: 1rem;
 }
 
-
-.icon-close{
+.icon-close {
   font-size: 2rem;
   position: absolute;
   right: 0;
 }
 
-.icon-close:hover{
-  cursor:pointer
+.icon-close:hover {
+  cursor: pointer;
 }
-
 
 .reserva-fechas {
   width: 50%;
@@ -33,10 +31,9 @@
 
 .reserva-fecha {
   font-size: 1rem;
-  margin: .2rem;
+  margin: 0.2rem;
   text-align: center;
 }
-
 
 .reserva-habitaciones {
   display: flex;
@@ -47,13 +44,13 @@
   overflow-y: scroll;
 }
 
-.reserva-footer{
+.reserva-footer {
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
 }
 
-.reserva-footer-total{
+.reserva-footer-total {
   font-size: 1.5rem;
 }
 
@@ -64,20 +61,20 @@
   background-color: rgb(67, 0, 210);
   width: 7rem;
   height: 2rem;
-  transition: .25s ease-in-out;
-  margin-top: .5rem;
+  transition: 0.25s ease-in-out;
+  margin-top: 0.5rem;
   align-self: center;
 }
 
-.confirmar:hover{
+.confirmar:hover {
   border: 1px solid rgb(67, 0, 210);
   background-color: white;
   color: rgb(67, 0, 210);
   cursor: pointer;
 }
 
-@media screen and (max-width:1500px){
-  .reserva-container{
+@media screen and (max-width: 1500px) {
+  .reserva-container {
     width: 90%;
   }
 }
